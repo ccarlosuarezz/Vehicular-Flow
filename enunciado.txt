@@ -1,0 +1,39 @@
+Problema de flujo vehicular
+
+Via(geometria), dos carriles en ambas direcciones
+
+Vehiculo
+	tamaño (longitud)
+	velocidad promedio depende del vehiculo
+
+evaluar	¿Comportamiento de los vehiculos en la via?
+		--> condiciones, distribucion y volumenes de trafico
+	¿Seguridad en la via?
+
+Autonomia --> moverse
+	de acuerdo a su entorno
+	tomar deciciones
+	percibir el entorno (distancia y velocidad de los demas vehiculos)
+	rebasar los demas vehiculos, disminuir velocidad, aumentar velocidad.
+
+aUML para diseña sistemas de agentes
+
+POO
+   vehicle
+     -longitud
+     -velocidad
+     ----------
+     +moverse
+     +girar
+     +acelerar
+
+sensores de vehiculo
+     ver() --> determinar distancia de obstaculor
+	visibilidad ependiendo del vehiculo
+
+esquema de pizarra
+
+version 1 --> via recta
+
+Escalamiento 
+	Tiempo/espacio
