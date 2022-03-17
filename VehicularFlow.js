@@ -14,8 +14,8 @@ function simulation() {
         context.clearRect(0, 0, way.width, way.height);
         drawGuides();
         createVehicles();
-        perceiveVehicles();
         drawVehicles();
+        perceiveVehicles();
         validateEndOfTrip();
     }, (1000)/TIME_SCALE);
 }
@@ -112,7 +112,6 @@ function perceiveVehicles() {
                         }
                     }
                 }
-                
             }
         }
     }
