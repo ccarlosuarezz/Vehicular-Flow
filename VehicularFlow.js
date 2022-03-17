@@ -92,7 +92,7 @@ function perceiveVehicles() {
                         vehicleB = vehicleList[i];
                     }
                     distance = distanceBetweenVehicles(vehicleA, vehicleB);
-                    if (distance <= 0) {
+                    if (distance <= DETECTION_VEHICLE_DISTANCE * SCALE) {
                         if (vehicleA.speed > vehicleB.speed) {
                             vehicleA.speed = vehicleB.speed;
                         }
@@ -106,7 +106,7 @@ function perceiveVehicles() {
                         vehicleB = vehicleList[i];
                     }
                     distance = distanceBetweenVehicles(vehicleA, vehicleB);
-                    if (distance <= 0) {
+                    if (distance <= DETECTION_VEHICLE_DISTANCE * SCALE) {
                         if (vehicleB.speed > vehicleA.speed) {
                             vehicleB.speed = vehicleA.speed;
                         }
@@ -118,7 +118,7 @@ function perceiveVehicles() {
 }
 
 function distanceBetweenVehicles(vehicleA, vehicleB) {
-    return vehicleB.coordX - (vehicleA.coordX + (vehicleA.length * SCALE) + (DETECTION_VEHICLE_DISTANCE * SCALE));
+    return vehicleB.coordX - (vehicleA.coordX + (vehicleA.length * SCALE));
 }
 
 simulation();

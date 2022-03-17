@@ -8,7 +8,6 @@ class Vehicle {
         this.speed = this.setSpeed(); //Km/h
         this.direction = direction;//0=izquierda o 1=derecha
         this.aggressiveness = aggressiveness;
-        // this.image = this.setImage();
         this.coordX = this.setCoordX();
         this.coordY = this.setCoordY();
     }
