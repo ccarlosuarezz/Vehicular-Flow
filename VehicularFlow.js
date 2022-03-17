@@ -14,14 +14,15 @@ function simulation() {
         context.clearRect(0, 0, way.width, way.height);
         drawGuides();
         createVehicles();
+        perceiveVehicles();
         drawVehicles();
         validateEndOfTrip();
-    }, 100);
+    }, (1000)/TIME_SCALE);
 }
 
 function createVehicles() {
     let randomTrafic = randomValue(0, 100);
-    if (randomTrafic < 10) {
+    if (randomTrafic < 5) {
         let vehicleSize = VEHICLE_SIZE_LIST[randomValue(0, VEHICLE_SIZE_LIST.length)];
         let newVehicle = new Vehicle(vehicleSize, randomValue(0,1), randomValue(0,1));
         newVehicle.setImage();
@@ -73,6 +74,52 @@ function validateEndOfTrip() {
             vehicleList.splice(i, 1);
         }
     }
+}
+
+function perceiveVehicles() {
+    let distance = 0;
+    let vehicleA;
+    let vehicleB;
+    if (vehicleList.length > 1) {
+        for (let i = 0; i < vehicleList.length-1; i++) {
+            for (let j = i+1; j < vehicleList.length; j++) {
+                if (vehicleList[i].direction == 0 && vehicleList[j].direction == 0) {
+                    if (vehicleList[i].coordX < vehicleList[j].coordX) {
+                        vehicleA = vehicleList[i];
+                        vehicleB = vehicleList[j];
+                    } else if (vehicleList[j].coordX < vehicleList[i].coordX) {
+                        vehicleA = vehicleList[j];
+                        vehicleB = vehicleList[i];
+                    }
+                    distance = distanceBetweenVehicles(vehicleA, vehicleB);
+                    if (distance <= 0) {
+                        if (vehicleA.speed > vehicleB.speed) {
+                            vehicleA.speed = vehicleB.speed;
+                        }
+                    }
+                } else if (vehicleList[i].direction == 1 && vehicleList[j].direction == 1) {
+                    if (vehicleList[i].coordX < vehicleList[j].coordX) {
+                        vehicleA = vehicleList[i];
+                        vehicleB = vehicleList[j];
+                    } else if (vehicleList[j].coordX < vehicleList[i].coordX) {
+                        vehicleA = vehicleList[j];
+                        vehicleB = vehicleList[i];
+                    }
+                    distance = distanceBetweenVehicles(vehicleA, vehicleB);
+                    if (distance <= 0) {
+                        if (vehicleB.speed > vehicleA.speed) {
+                            vehicleB.speed = vehicleA.speed;
+                        }
+                    }
+                }
+                
+            }
+        }
+    }
+}
+
+function distanceBetweenVehicles(vehicleA, vehicleB) {
+    return vehicleB.coordX - (vehicleA.coordX + (vehicleA.length * SCALE) + (DETECTION_VEHICLE_DISTANCE * SCALE));
 }
 
 simulation();

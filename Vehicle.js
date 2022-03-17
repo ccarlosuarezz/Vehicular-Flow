@@ -36,16 +36,16 @@ class Vehicle {
         let speed = 0;
         switch (this.length) {
             case BIKE_SIZE:
-                speed = randomValue(50, 80);
+                speed = BIKE_SPEED;
                 break;
             case CAR_SIZE:
-                speed = randomValue(50, 80);
+                speed = CAR_SPEED;
                 break;
             case BUS_SIZE:
-                speed = randomValue(40, 70);
+                speed = BUS_SPEED;
                 break;
             case TRUCK_SIZE:
-                speed = randomValue(30, 60);
+                speed = TRUCK_SPEED;
                 break;
         }
         return speed;
@@ -92,15 +92,14 @@ class Vehicle {
     }
 
     move() {
-        console.log('Move');
         if (this.direction == 0) {
-            this.coordX += Math.round(this.speed/2);
+            this.coordX += Math.round(this.speed/TIME_SCALE*2);
         } else {
-            this.coordX -= Math.round(this.speed/2);
+            this.coordX -= Math.round(this.speed/TIME_SCALE*2);
         }
     }
 
-    speedUp() {
+    speedDown() {
 
     }
 }

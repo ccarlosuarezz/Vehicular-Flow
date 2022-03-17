@@ -3,6 +3,11 @@ const CAR_SIZE = 4;//metros
 const BUS_SIZE = 7;//metros
 const TRUCK_SIZE = 10;//metros
 
+const BIKE_SPEED = 80;//Km/h
+const CAR_SPEED = 60;//Km/h
+const BUS_SPEED = 40;//Km/h
+const TRUCK_SPEED = 30;//Km/h
+
 const VEHICLE_SIZE_LIST = [BIKE_SIZE, CAR_SIZE, BUS_SIZE, TRUCK_SIZE];
 
 const BIKE_HEIGHT = 20;
@@ -13,6 +18,7 @@ const TRUCK_HEIGHT = 35;
 const WIDTH_WAY = 100;//metros
 const HEIGHT_WAY = 10; //metros
 const SCALE = 10;
+const TIME_SCALE = 10;
 
 const YELLOW_COLOR = '#FFC900';
 
@@ -24,3 +30,5 @@ const BUS_L_IMG = './images/busL.png';
 const BUS_R_IMG = './images/busR.png';
 const TRUCK_L_IMG = './images/truckL.png';
 const TRUCK_R_IMG = './images/truckR.png';
+
+const DETECTION_VEHICLE_DISTANCE = 5;//metros
